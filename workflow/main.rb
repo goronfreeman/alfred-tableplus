@@ -2,7 +2,9 @@ require_relative 'lib/alfred-workflow-ruby/alfred-3_workflow'
 require_relative 'lib/plist/plist'
 
 module AlfredTablePlus
-  class Search
+  class Browse
+    SUPPORTED_DBS = %w(mysql postgresql sqlite).freeze
+
     attr_reader :workflow, :path, :connections
 
     def initialize
@@ -11,13 +13,18 @@ module AlfredTablePlus
       @connections = Plist.parse_xml(path)
     end
 
-    def search
+    def open
       output_json
       print workflow.output
     end
 
-    def build_connection_string(connection)
-      adapter = connection['Driver'].downcase
+    def supported_adapter?(adapter)
+      SUPPORTED_DBS.include?(adapter)
+    end
+
+    def build_connection_string(adapter, connection)
+      return connection['DatabasePath'] if adapter == 'sqlite'
+
       host = connection['DatabaseHost']
       db_name = connection['DatabaseName']
       user = connection['DatabaseUser']
@@ -27,7 +34,9 @@ module AlfredTablePlus
 
     def output_json
       connections.each do |connection|
-        connection_string = build_connection_string(connection)
+        adapter = connection['Driver'].downcase
+        next unless supported_adapter?(adapter)
+        connection_string = build_connection_string(adapter, connection)
 
         workflow.result
                 .uid(connection['ID'])
@@ -41,4 +50,4 @@ module AlfredTablePlus
   end
 end
 
-AlfredTablePlus::Search.new.search
+AlfredTablePlus::Browse.new.open
