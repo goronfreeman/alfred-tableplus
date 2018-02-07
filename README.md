@@ -2,6 +2,8 @@
 
 An [Alfred 3](https://www.alfredapp.com/) workflow for opening databases in [TablePlus](https://tableplus.io/).
 
+![alfred-tableplus](https://i.imgur.com/y9nI3Ga.png)
+
 ## Installation
 
 [Download](https://github.com/goronfreeman/alfred-tableplus/releases/latest) the latest `TablePlus.alfredworkflow` file and double click it to install.
