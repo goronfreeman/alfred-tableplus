@@ -20,7 +20,7 @@ This workflow currently only supports MySQL, PostgreSQL, and SQLite. I don't hav
 
 Special thanks to [Phill Ayers](https://github.com/payers1) for the inspiration from his [alfred-postico-favorites-workflow](https://github.com/payers1/alfred-postico-favorites-workflow).
 
-alfred-genius uses these libraries:
+alfred-tableplus uses these libraries:
 
 * [alfred-workflow-ruby](https://github.com/joetannenbaum/alfred-workflow-ruby) by [Joe Tannenbaum](https://github.com/joetannenbaum)
 * [plist](https://github.com/patsplat/plist) by [Patrick Way](https://github.com/patsplat)
