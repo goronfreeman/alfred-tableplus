@@ -3,7 +3,7 @@ require_relative 'lib/plist/plist'
 
 module AlfredTablePlus
   class Browse
-    SUPPORTED_DBS = %w[mysql postgresql sqlite].freeze
+    SUPPORTED_DBS = %w[microsoftsqlserver mysql postgresql redis sqlite].freeze
 
     attr_reader :workflow, :connections
 
@@ -22,21 +22,11 @@ module AlfredTablePlus
       SUPPORTED_DBS.include?(driver)
     end
 
-    def build_connection_string(driver, connection)
-      return connection['DatabasePath'] if driver == 'sqlite'
-
-      host = connection['DatabaseHost']
-      db_name = connection['DatabaseName']
-      user = connection['DatabaseUser']
-
-      "#{driver}://#{user}@#{host}/#{db_name}"
-    end
-
     def output_json
       connections.each do |connection|
         driver = connection['Driver'].downcase
         next unless supported_driver?(driver)
-        connection_string = build_connection_string(driver, connection)
+        connection_string = "tableplus://?id=#{connection["ID"]}"
 
         workflow.result
                 .uid(connection['ID'])

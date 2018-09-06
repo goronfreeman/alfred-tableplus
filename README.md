@@ -14,7 +14,7 @@ Simply type `tp` and you will be presented with a list of database connections y
 
 ## Notes
 
-This workflow currently only supports MySQL, PostgreSQL, and SQLite. I don't have Microsoft SQL Server or Redis setup on my machine, so I can't test it. If you'd like to add support, feel free to submit a pull request.
+This workflow currently supports MySQL, PostgreSQL, SQLite, Microsoft SQL Server and Redis.
 
 ## Credits
 
