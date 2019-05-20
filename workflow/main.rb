@@ -18,6 +18,7 @@ module AlfredTablePlus
 
     def output_json
       connections.each do |connection|
+        driver = connection['Driver'].downcase
         connection_string = "tableplus://?id=" + connection['ID']
 
         workflow.result
