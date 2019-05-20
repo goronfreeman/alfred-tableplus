@@ -12,10 +12,6 @@ An [Alfred 3](https://www.alfredapp.com/) workflow for opening databases in [Tab
 
 Simply type `tp` and you will be presented with a list of database connections you have added to TablePlus. You can type to filter by name, then press `Enter` to open the database within TablePlus.
 
-## Notes
-
-This workflow currently only supports MySQL, PostgreSQL, and SQLite. I don't have Microsoft SQL Server or Redis setup on my machine, so I can't test it. If you'd like to add support, feel free to submit a pull request.
-
 ## Credits
 
 Special thanks to [Phill Ayers](https://github.com/payers1) for the inspiration from his [alfred-postico-favorites-workflow](https://github.com/payers1/alfred-postico-favorites-workflow).
